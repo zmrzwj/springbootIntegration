@@ -28,6 +28,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("Authorization");// 从 http 请求头中取出 Authorization
+        if(!(handler instanceof HandlerMethod)){// 如果不是映射到方法直接通过
+            return true;
+        }
         HandlerMethod handlerMethod=(HandlerMethod)handler;
         Method method = handlerMethod.getMethod();
         if (method.isAnnotationPresent(PassToken.class)) {
