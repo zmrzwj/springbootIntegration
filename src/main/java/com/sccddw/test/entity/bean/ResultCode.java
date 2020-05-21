@@ -122,6 +122,7 @@ public enum ResultCode {
     DATA_CAN_NOT_DEL(50011, "只能删除来源是资料管理的附件"),
     DATA_HISTORY_NULL(50012, "该记录暂无历史留痕"),
     DATA_EXIST(50013, "该记录已存在"),
+    FILE_ERROR(50014,"系统找不到指定的文件"),
 
     /* 接口错误：60001-69999 */
     INTERFACE_INNER_INVOKE_ERROR(60001, ""),

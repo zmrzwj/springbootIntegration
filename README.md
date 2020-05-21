@@ -9,4 +9,6 @@ mybatis
 mongodb
 redis
 es
+socket-io
+文件上传下载集成
 ```
