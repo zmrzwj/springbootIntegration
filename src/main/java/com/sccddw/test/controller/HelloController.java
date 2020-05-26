@@ -1,5 +1,6 @@
 package com.sccddw.test.controller;
 
+import com.sccddw.test.annotation.UserLoginToken;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping("/test")
     @ApiOperation(value="我的测试")
-    public String test(@RequestParam("id")String id) {
-        return "hello test" + id;
+    @UserLoginToken
+    public String test() {
+        return "hello test";
     }
 }
