@@ -5,6 +5,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 /**
  * description
  *
@@ -12,17 +14,17 @@ import org.springframework.stereotype.Component;
  * date 2020/5/11 10:42
  * @version 1.0
  **/
+//@SuppressWarnings("unchecked")
 @Component
 public class RedisUtil {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     public String get(String key) {
-        String value = (String) stringRedisTemplate.opsForValue().get(key);
-        return value;
+        return stringRedisTemplate.opsForValue().get(key);
     }
 
     public void add(String key, String value) {
@@ -33,13 +35,16 @@ public class RedisUtil {
         return key == null ? null : redisTemplate.opsForValue().get(key);
     }
 
-    public boolean addObj(String key, Object value) {
+    public void addObj(String key, Object value) {
         try {
             redisTemplate.opsForValue().set(key, value);
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+    }
+
+    public void getSet(String key) {
+        ArrayList<String> list = new ArrayList<String>();
+        stringRedisTemplate.opsForSet().add("1", "2");
     }
 }

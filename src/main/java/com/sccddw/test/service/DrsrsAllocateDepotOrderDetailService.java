@@ -12,5 +12,5 @@ import org.springframework.beans.factory.annotation.Value;
  **/
 
 public interface DrsrsAllocateDepotOrderDetailService {
-    testDO selectByPrimaryKey(Integer id);
+//    testDO selectByPrimaryKey(Integer id);
 }

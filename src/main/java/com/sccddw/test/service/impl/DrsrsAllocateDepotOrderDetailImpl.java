@@ -1,7 +1,6 @@
 package com.sccddw.test.service.impl;
 
 import com.sccddw.test.entity.testDO;
-import com.sccddw.test.mapper.DrsrsAllocateDepotOrderDetailMapper;
 import com.sccddw.test.service.DrsrsAllocateDepotOrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,14 +18,4 @@ public class DrsrsAllocateDepotOrderDetailImpl implements DrsrsAllocateDepotOrde
     @Value("${zwj.name}")
     private String name;
 
-    @Autowired
-    DrsrsAllocateDepotOrderDetailMapper drsrsAllocateDepotOrderDetailMapper;
-
-
-    @Override
-    public testDO selectByPrimaryKey(Integer id) {
-        System.out.println("selectByPrimaryKey");
-        System.out.println(name);
-        return drsrsAllocateDepotOrderDetailMapper.selectByPrimaryKey(id);
-    }
 }

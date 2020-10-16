@@ -1,19 +1,14 @@
 package com.sccddw.test.controller;
 
-import com.sccddw.test.annotation.UserLoginToken;
 import com.sccddw.test.entity.bean.MongoBean;
 import com.sccddw.test.entity.bean.RedisBean;
 import com.sccddw.test.entity.testDO;
-import com.sccddw.test.mapper.DrsrsAllocateDepotOrderDetailMapper;
 import com.sccddw.test.service.DrsrsAllocateDepotOrderDetailService;
-import com.sccddw.test.utils.EsUtil;
 import com.sccddw.test.utils.MongoUtil;
 import com.sccddw.test.utils.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,8 +43,9 @@ public class DrsrsAllocateDepotOrderDetailController {
 
     @GetMapping("/AllocateDepotOrderDetail")
     @ApiOperation(value="我的测试 AllocateDepotOrderDetail")
-    public testDO test() {
-        return drsrsAllocateDepotOrderDetailService.selectByPrimaryKey(17);
+    public String test() {
+        return "";
+//        return drsrsAllocateDepotOrderDetailService.selectByPrimaryKey(17);
     }
 
     @GetMapping("/redisTest")

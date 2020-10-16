@@ -107,6 +107,11 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.1.2</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.baomidou</groupId>-->
+<!--            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
+<!--            <version>2.5.6</version>-->
+<!--        </dependency>-->
 
         <!--lombok-->
         <dependency>
@@ -174,6 +179,13 @@
             <groupId>com.corundumstudio.socketio</groupId>
             <artifactId>netty-socketio</artifactId>
             <version>1.7.18</version>
+        </dependency>
+
+        <!--shiro-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.5.3</version>
         </dependency>
 
 
