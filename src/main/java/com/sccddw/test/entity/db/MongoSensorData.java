@@ -1,32 +1,41 @@
 package com.sccddw.test.entity.db;
 
-import com.baomidou.mybatisplus.annotation.*;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
-//import java.sql.Date;
-
 /**
  * description
  *
  * @author dell
- * date 2020/9/28 10:41
+ * date 2020/10/18 14:52
  * @version 1.0
  **/
 @Data
-public class SensorData extends Model<SensorData> implements Serializable {
-    @TableId(value = "id",type = IdType.AUTO)
-    private BigInteger id;
+@Document("mongoSensorData")
+// 复合索引,不过建议在命令行建
+//@CompoundIndex(def = "{'userId': 1, 'nickname': -1}")
+public class MongoSensorData implements Serializable {
+    @Id
+    private BigInteger id; // 主键
 
-    // 要在逻辑删除时修改此项，需要加@TableField(fill = FieldFill.UPDATE)
-    @TableField(fill = FieldFill.UPDATE)
+    @Indexed
     private String deviceCode = null;
+
+    @Field("systemV") // 当属性与MongoDB字段的名字，不一致时可以使用Field做映射
     private Double systemV = null;
     private Double batteryV = null;
     private Double sensorV = null;
@@ -45,24 +54,11 @@ public class SensorData extends Model<SensorData> implements Serializable {
     private Double ch4Value = null;
     private String acquisitionTime;
 
-    // insert时填充
-//    @TableField(fill = FieldFill.INSERT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime = new Date();
 
-    // update时填充
-//    @TableField(fill = FieldFill.UPDATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime = new Date();
-
-    // 版本
-//    @Version
-//    private Integer version;
-
-    // 标明逻辑删除字段
-//    @TableLogic
-//    @TableField(select = false)
-//    private Integer deleted;
 }

@@ -29,7 +29,7 @@ public class socketCommandLineRunner implements CommandLineRunner {
             public void run(){
                 try {
                     log.info("开始启动");
-                    socketIOService.start();
+//                    socketIOService.start();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

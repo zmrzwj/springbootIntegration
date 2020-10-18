@@ -11,8 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -31,8 +29,6 @@ import java.util.List;
 @TableName("drsrs_user")
 public class User implements Serializable {
 
-    @Min(groups = {UserFindValidView.class,UserResetPwdValidView.class},value = 10, message="id错误")
-    @NotNull(groups = {UserFindValidView.class,UserResetPwdValidView.class}, message="id不能为空")
     @TableId(value = "id",type = IdType.AUTO)
     Integer id;
 

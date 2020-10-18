@@ -14,5 +14,6 @@ import org.springframework.stereotype.Repository;
  **/
 @Mapper
 @Repository
-public interface SensorDataMapper extends BaseMapper<SensorData> {
+public interface SensorDataMapper extends MyMapper<SensorData> {
+
 }

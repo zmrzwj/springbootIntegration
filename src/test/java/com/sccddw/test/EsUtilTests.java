@@ -4,8 +4,7 @@ import com.sccddw.test.entity.bean.EsBean;
 import com.sccddw.test.mapper.SensorDataMapper;
 import com.sccddw.test.service.impl.SensorDataServiceImpl;
 import com.sccddw.test.utils.EsUtil;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,7 +20,6 @@ import java.util.List;
  * date 2020/5/12 16:30
  * @version 1.0
  **/
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class EsUtilTests {
     @Autowired
@@ -81,6 +79,8 @@ public class EsUtilTests {
 //            }).start();
 //        }
 
-        sensorDataService.selectSensorData();
+//        sensorDataService.selectSensorData();
+
+        sensorDataService.deleteAll();
     }
 }
