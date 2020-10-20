@@ -2,6 +2,7 @@ package com.sccddw.test;
 
 import com.sccddw.test.entity.db.MongoDevice;
 import com.sccddw.test.entity.db.MongoSensorData;
+import com.sccddw.test.entity.db.MongoUser;
 import com.sccddw.test.entity.db.SensorData;
 import com.sccddw.test.service.impl.MongoDeviceServiceImpl;
 import com.sccddw.test.service.impl.MongoSensorDataServiceImpl;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,9 @@ public class MongoTests {
 
     @Autowired
     MongoDeviceServiceImpl mongoDeviceService;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     @Test
     public void pageFindByAcquisitionTime() {
@@ -63,6 +69,15 @@ public class MongoTests {
     @Test
     public void lookupOperationTest () {
         List list = mongoSensorDataService.lookupOperation("2020-10-15 15:16:11");
+        list.forEach(System.out::println);
+    }
+
+    // mongodb路由连接测试
+    @Test
+    public void mongoRouter() {
+        Query query = new Query();
+        query.limit(10);
+        List<MongoUser> list = mongoTemplate.find(query, MongoUser.class, "user");
         list.forEach(System.out::println);
     }
 }
