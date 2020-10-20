@@ -31,15 +31,16 @@ public class HelloController {
     @ApiOperation(value="我的测试")
 //    @UserLoginToken
     public String test() {
-        for(int i = 0; i < 100;i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-//                    List rows = jdbcTemplate.queryForList("SELECT DISTINCT(CONS_NO) as C, DATA_DATA, SUM(R1) as s, RAND() * 1000 as r FROM mp_read_curve_jg_150 order by R3 DESC limit 100;");
-//                    System.out.println(rows);
-                }
-            }).start();
-        }
+//        for(int i = 0; i < 100;i++) {
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+////                    List rows = jdbcTemplate.queryForList("SELECT DISTINCT(CONS_NO) as C, DATA_DATA, SUM(R1) as s, RAND() * 1000 as r FROM mp_read_curve_jg_150 order by R3 DESC limit 100;");
+////                    System.out.println(rows);
+//                }
+//            }).start();
+//        }
+        System.out.println("hell test");
 
         return "hello test";
     }

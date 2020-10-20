@@ -2,6 +2,7 @@ package com.sccddw.test;
 
 import com.sccddw.test.entity.db.MongoSensorData;
 import com.sccddw.test.entity.db.SensorData;
+import com.sccddw.test.service.impl.AopTestImpl;
 import com.sccddw.test.service.impl.MongoSensorDataServiceImpl;
 import com.sccddw.test.utils.EsUtil;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,9 @@ class ZwjSptingBootTestApplicationTests {
     @Autowired
     MongoSensorDataServiceImpl mongoSensorDataService;
 
+    @Autowired
+    AopTestImpl aopTest;
+
     @Test
     void contextLoads() {
         MongoSensorData sensorData = new MongoSensorData();
@@ -21,4 +25,8 @@ class ZwjSptingBootTestApplicationTests {
         mongoSensorDataService.save(sensorData);
     }
 
+    @Test
+    public void aspect(){
+        aopTest.test("hello");
+    }
 }
